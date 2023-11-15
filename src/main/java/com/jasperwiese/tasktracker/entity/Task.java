@@ -2,13 +2,17 @@ package com.jasperwiese.tasktracker.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.ZonedDateTime;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Task {
     @Id
     @SequenceGenerator(
@@ -26,6 +30,8 @@ public class Task {
     private String description;
     private boolean started;
     private boolean completed;
+    private ZonedDateTime startDate;
+    private ZonedDateTime completedDate;
     @ManyToOne(
             cascade = CascadeType.ALL
     )
